@@ -37,6 +37,13 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
+// Theme
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { UnifiedThemeProvider } from '@backstage/theme';
+import LightIcon from '@material-ui/icons/WbSunny';
+import { lightTheme } from './theme/lightTheme';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -59,11 +66,26 @@ const app = createApp({
   components: {
     SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
   },
+  themes: [{
+    id: 'light-theme',
+    title: 'custom-light-theme',
+    variant: 'light',
+    icon: <LightIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={lightTheme} children={children} />
+    ),
+  }]
 });
+
+// import { HomepageCompositionRoot } from '@backstage/plugin-home';
+// import { HomePage } from './components/home/HomePage';
 
 const routes = (
   <FlatRoutes>
     <Route path="/" element={<Navigate to="catalog" />} />
+    {/* <Route path="/" element={<HomepageCompositionRoot />}>
+      <HomePage />
+    </Route> */}
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"

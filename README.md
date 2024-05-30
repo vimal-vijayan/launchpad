@@ -17,3 +17,6 @@ Fix
 ```
 yarn install --dev swc-loader
 ```
+
+
+yarn --cwd packages/app add @backstage/theme
