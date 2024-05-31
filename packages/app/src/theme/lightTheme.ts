@@ -29,7 +29,7 @@ export const lightTheme = createUnifiedTheme({
         main: '#10B981',  // Bright green for success
       },
       background: {
-        default: '#E0E7FF',  // Light blue for a clean, neutral background
+        default: '#e0e4ff',  // Light blue for a clean, neutral background
         paper: '#FFFFFF',    // Pure white for paper elements
       },
       banner: {
@@ -42,11 +42,11 @@ export const lightTheme = createUnifiedTheme({
       warningBackground: '#FFECB3',  // Light amber for warning backgrounds
       infoBackground: '#BBDEFB',  // Light blue for info backgrounds
       navigation: {
-        background: '#E0E7FF',  // Soft light blue background for the sidebar
+        background: '#e0e4ff',  // Soft light blue background for the sidebar
         indicator: '#A52A2A',   // Dark blue indicator to match the logo
         color: '#2563EB',       // Dark blue text to match the logo
         selectedColor: '#3B82F6',  // Bright blue for selected items
-        hoverBackground: '#E0E7FF', // Same background color as default for hover
+        hoverBackground: '#e4e0ff', // Same background color as default for hover
         hoverColor: '#1E3A8A',   // Dark blue text for hover
       },
     },
