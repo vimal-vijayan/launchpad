@@ -11,10 +11,10 @@ export const lightTheme = createUnifiedTheme({
     palette: {
       ...palettes.light,
       primary: {
-        main: '#1E3A8A',  // Dark blue matching your logo
+        main: '#051d55',  // Dark blue for primary
       },
       secondary: {
-        main: '#3B82F6',  // Bright blue for contrast
+        main: '#4D7CFE',  // Bright blue for contrast
       },
       error: {
         main: '#EF4444',  // A vibrant red for errors
@@ -23,31 +23,31 @@ export const lightTheme = createUnifiedTheme({
         main: '#F59E0B',  // Bright amber for warnings
       },
       info: {
-        main: '#2563EB',  // Strong blue for informational messages
+        main: '#1C4E80',  // Strong blue for informational messages
       },
       success: {
         main: '#10B981',  // Bright green for success
       },
       background: {
-        default: '#e0e4ff',  // Light blue for a clean, neutral background
+        default: '#F3F4F6',  // Light gray for a neutral background with better contrast
         paper: '#FFFFFF',    // Pure white for paper elements
       },
       banner: {
-        info: '#2563EB',
+        info: '#1C4E80',
         error: '#EF4444',
-        text: '#1E3A8A',
-        link: '#3B82F6',
+        text: '#0A369D',
+        link: '#4D7CFE',
       },
       errorBackground: '#FFCDD2',  // Light red for error backgrounds
       warningBackground: '#FFECB3',  // Light amber for warning backgrounds
       infoBackground: '#BBDEFB',  // Light blue for info backgrounds
       navigation: {
-        background: '#e0e4ff',  // Soft light blue background for the sidebar
-        indicator: '#A52A2A',   // Dark blue indicator to match the logo
-        color: '#2563EB',       // Dark blue text to match the logo
-        selectedColor: '#3B82F6',  // Bright blue for selected items
-        hoverBackground: '#e4e0ff', // Same background color as default for hover
-        hoverColor: '#1E3A8A',   // Dark blue text for hover
+        background: '#051d55',  // Dark blue background for the sidebar
+        indicator: '#bb1a4a',   // Brown indicator to provide contrast
+        color: '#FFFFFF',       // White text for better contrast with dark blue background
+        selectedColor: '#bb1a4a',  // Bright blue for selected items
+        hoverBackground: '#4D7CFE', // Bright blue background for hover effect
+        hoverColor: '#FFFFFF',   // White text for hover effect
       },
     },
     typography: {
@@ -57,39 +57,47 @@ export const lightTheme = createUnifiedTheme({
         fontSize: 64,
         fontWeight: 600,
         marginBottom: 16,
+        color: '#0A369D',
       },
       h2: {
         fontSize: 48,
         fontWeight: 600,
         marginBottom: 14,
+        color: '#0A369D',
       },
       h3: {
         fontSize: 36,
         fontWeight: 600,
         marginBottom: 12,
+        color: '#0A369D',
       },
       h4: {
         fontSize: 30,
         fontWeight: 600,
         marginBottom: 10,
+        color: '#0A369D',
       },
       h5: {
         fontSize: 24,
         fontWeight: 600,
         marginBottom: 8,
+        color: '#0A369D',
       },
       h6: {
         fontSize: 20,
         fontWeight: 600,
         marginBottom: 6,
+        color: '#0A369D',
       },
       body1: {
         fontSize: 16,
         lineHeight: 1.5,
+        color: '#0A369D',
       },
       body2: {
         fontSize: 14,
         lineHeight: 1.5,
+        color: '#0A369D',
       },
     },
   }),
@@ -108,29 +116,26 @@ export const lightTheme = createUnifiedTheme({
     },
   },
   pageTheme: {
-    home: genPageTheme({ colors: ['#1E3A8A', '#A52A2A'], shape: shapes.wave }),
+    home: genPageTheme({ colors: ['#0A369D', '#A52A2A'], shape: shapes.wave }),
     documentation: genPageTheme({
-      colors: ['#2563EB', '#A52A2A'],
+      colors: ['#1C4E80', '#A52A2A'],
       shape: shapes.wave2,
     }),
-    tool: genPageTheme({ colors: ['#3B82F6', '#A52A2A'], shape: shapes.round }),
+    tool: genPageTheme({ colors: ['#4D7CFE', '#A52A2A'], shape: shapes.round }),
     service: genPageTheme({
-      colors: ['#2563EB', '#1E3A8A'],
+      colors: ['#1C4E80', '#0A369D'],
       shape: shapes.wave,
     }),
     website: genPageTheme({
-      colors: ['#3B82F6', '#2563EB'],
+      colors: ['#4D7CFE', '#1C4E80'],
       shape: shapes.wave,
     }),
     library: genPageTheme({
-      colors: ['#1E3A8A', '#3B82F6'],
+      colors: ['#0A369D', '#4D7CFE'],
       shape: shapes.wave,
     }),
-    other: genPageTheme({ colors: ['#2563EB', '#3B82F6'], shape: shapes.wave }),
-    app: genPageTheme({ colors: ['#1E3A8A', '#3B82F6'], shape: shapes.wave }),
-    apis: genPageTheme({ colors: ['#2563EB', '#A52A2A'], shape: shapes.wave }),
+    other: genPageTheme({ colors: ['#1C4E80', '#4D7CFE'], shape: shapes.wave }),
+    app: genPageTheme({ colors: ['#0A369D', '#4D7CFE'], shape: shapes.wave }),
+    apis: genPageTheme({ colors: ['#1C4E80', '#A52A2A'], shape: shapes.wave }),
   },
 });
-
-
-

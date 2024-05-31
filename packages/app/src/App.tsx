@@ -43,6 +43,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { UnifiedThemeProvider } from '@backstage/theme';
 import LightIcon from '@material-ui/icons/WbSunny';
 import { lightTheme } from './theme/lightTheme';
+import { darkTheme } from './theme/darkTheme';
 
 // Import the sidebar CSS
 // import './theme/sidebar.css';
@@ -76,6 +77,15 @@ const app = createApp({
     icon: <LightIcon />,
     Provider: ({ children }) => (
       <UnifiedThemeProvider theme={lightTheme} children={children} />
+    ),
+  },
+  {
+    id: 'dark-theme',
+    title: 'custom-dark-theme',
+    variant: 'light',
+    icon: <LightIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={darkTheme} children={children} />
     ),
   }]
 });

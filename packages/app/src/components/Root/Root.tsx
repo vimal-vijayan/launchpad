@@ -96,7 +96,8 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
             />
             <SidebarSubmenuItem
               title="APIs"
-              to="catalog?filters[kind]=api"
+              to="api-docs"
+              // to="catalog?filters[kind]=api"
               icon={useApp().getSystemIcon('kind:api')}
             />
             <SidebarDivider />
