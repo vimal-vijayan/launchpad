@@ -44,6 +44,9 @@ import { UnifiedThemeProvider } from '@backstage/theme';
 import LightIcon from '@material-ui/icons/WbSunny';
 import { lightTheme } from './theme/lightTheme';
 
+// Import the sidebar CSS
+// import './theme/sidebar.css';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {

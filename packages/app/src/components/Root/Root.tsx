@@ -5,13 +5,17 @@ import ExtensionIcon from '@material-ui/icons/Extension';
 import MapIcon from '@material-ui/icons/MyLocation';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import CategoryIcon from '@material-ui/icons/Category';
+import { useApp } from '@backstage/core-plugin-api';
+import { TemplateTypePicker } from '@backstage/plugin-scaffolder';
+
+// Custom Logo Components
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
-import {
-  Settings as SidebarSettings,
-  UserSettingsSignInAvatar,
-} from '@backstage/plugin-user-settings';
-import { SidebarSearchModal } from '@backstage/plugin-search';
+
+// Sidebar Plugins and Components
 import {
   Sidebar,
   sidebarConfig,
@@ -23,24 +27,22 @@ import {
   SidebarSpace,
   useSidebarOpenState,
   Link,
-
-  // custom sidecar
-  GroupIcon,
   SidebarSubmenu,
   SidebarSubmenuItem,
 } from '@backstage/core-components';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import CategoryIcon from '@material-ui/icons/Category';
+import {
+  Settings as SidebarSettings,
+  UserSettingsSignInAvatar,
+} from '@backstage/plugin-user-settings';
+import { SidebarSearchModal } from '@backstage/plugin-search';
 
-
-//custom sidebar
-import { useApp } from '@backstage/core-plugin-api';
+// Import the sidebar CSS
+import '../../theme/sidebar.css';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
     width: sidebarConfig.drawerWidthClosed,
-    height: 3 * sidebarConfig.logoHeight,
+    height: 5 * sidebarConfig.logoHeight,
     display: 'flex',
     flexFlow: 'row nowrap',
     alignItems: 'center',
@@ -51,6 +53,7 @@ const useSidebarLogoStyles = makeStyles({
     marginLeft: 24,
   },
 });
+
 
 const SidebarLogo = () => {
   const classes = useSidebarLogoStyles();
@@ -74,10 +77,6 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
       </SidebarGroup>
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {/* Global nav, not org-specific */}
-        {/* <SidebarItem icon={HomeIcon} to="catalog" text="Home" /> */}
-        {/* <SidebarItem icon={HomeIcon} to="/" text="Home" /> */}
-
         <SidebarItem icon={HomeIcon} to="catalog" text="Home">
           <SidebarSubmenu title="Catalog">
             <SidebarSubmenuItem
@@ -117,15 +116,17 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
               to="catalog?filters[kind]=user"
               icon={useApp().getSystemIcon('kind:user')}
             />
+            <SidebarSubmenuItem
+              title="Templates"
+              to="catalog?filters[kind]=template"
+              icon={useApp().getSystemIcon('kind:template')}
+            />
           </SidebarSubmenu>
         </SidebarItem>
-
         <SidebarItem icon={CategoryIcon} to="catalog" text="Catalog" />
         <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
         <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-        
-        {/* End global nav */}
+        <SidebarItem icon={CreateComponentIcon} to="create" text="Create" />
         <SidebarDivider />
         <SidebarScrollWrapper>
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />

@@ -1,113 +1,136 @@
 import {
-    createBaseThemeOptions,
-    createUnifiedTheme,
-    genPageTheme,
-    palettes,
-    shapes,
-  } from '@backstage/theme';
-  
-  export const lightTheme = createUnifiedTheme({
-    ...createBaseThemeOptions({
-      palette: {
-        ...palettes.light,
-        primary: {
-          main: '#343b58',
-        },
-        secondary: {
-          main: '#565a6e',
-        },
-        error: {
-          main: '#8c4351',
-        },
-        warning: {
-          main: '#8f5e15',
-        },
-        info: {
-          main: '#34548a',
-        },
-        success: {
-          main: '#485e30',
-        },
-        background: {
-          default: '#d5d6db',
-          paper: '#d5d6db',
-        },
-        banner: {
-          info: '#34548a',
-          error: '#8c4351',
-          text: '#343b58',
-          link: '#565a6e',
-        },
-        errorBackground: '#8c4351',
-        warningBackground: '#8f5e15',
-        infoBackground: '#343b58',
-        navigation: {
-          background: '#343b58',
-          indicator: '#8f5e15',
-          color: '#d5d6db',
-          selectedColor: '#ffffff',
-        },
+  createBaseThemeOptions,
+  createUnifiedTheme,
+  genPageTheme,
+  palettes,
+  shapes,
+} from '@backstage/theme';
+
+export const lightTheme = createUnifiedTheme({
+  ...createBaseThemeOptions({
+    palette: {
+      ...palettes.light,
+      primary: {
+        main: '#1E3A8A',  // Dark blue matching your logo
       },
-      typography: {
-        htmlFontSize: 16,
-        fontFamily: 'Roboto, sans-serif',
-        h1: {
-          fontSize: 72,
-          fontWeight: 700,
-          marginBottom: 10,
-        },
-        h2: {
-          fontSize: 40,
-          fontWeight: 700,
-          marginBottom: 8,
-        },
-        h3: {
-          fontSize: 32,
-          fontWeight: 700,
-          marginBottom: 6,
-        },
-        h4: {
-          fontWeight: 700,
-          fontSize: 28,
-          marginBottom: 6,
-        },
-        h5: {
-          fontWeight: 700,
-          fontSize: 24,
-          marginBottom: 4,
-        },
-        h6: {
-          fontWeight: 700,
-          fontSize: 20,
-          marginBottom: 2,
-        },
+      secondary: {
+        main: '#3B82F6',  // Bright blue for contrast
       },
-    }),
-    defaultPageTheme: 'home',
-    fontFamily: 'Roboto',
-    
-    /* below drives the header colors */
-    pageTheme: {
-      home: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
-      documentation: genPageTheme({
-        colors: ['#8c4351', '#343b58'],
-        shape: shapes.wave2,
-      }),
-      tool: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.round }),
-      service: genPageTheme({
-        colors: ['#8c4351', '#343b58'],
-        shape: shapes.wave,
-      }),
-      website: genPageTheme({
-        colors: ['#8c4351', '#343b58'],
-        shape: shapes.wave,
-      }),
-      library: genPageTheme({
-        colors: ['#8c4351', '#343b58'],
-        shape: shapes.wave,
-      }),
-      other: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
-      app: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
-      apis: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
+      error: {
+        main: '#EF4444',  // A vibrant red for errors
+      },
+      warning: {
+        main: '#F59E0B',  // Bright amber for warnings
+      },
+      info: {
+        main: '#2563EB',  // Strong blue for informational messages
+      },
+      success: {
+        main: '#10B981',  // Bright green for success
+      },
+      background: {
+        default: '#E0E7FF',  // Light blue for a clean, neutral background
+        paper: '#FFFFFF',    // Pure white for paper elements
+      },
+      banner: {
+        info: '#2563EB',
+        error: '#EF4444',
+        text: '#1E3A8A',
+        link: '#3B82F6',
+      },
+      errorBackground: '#FFCDD2',  // Light red for error backgrounds
+      warningBackground: '#FFECB3',  // Light amber for warning backgrounds
+      infoBackground: '#BBDEFB',  // Light blue for info backgrounds
+      navigation: {
+        background: '#E0E7FF',  // Soft light blue background for the sidebar
+        indicator: '#A52A2A',   // Dark blue indicator to match the logo
+        color: '#2563EB',       // Dark blue text to match the logo
+        selectedColor: '#3B82F6',  // Bright blue for selected items
+        hoverBackground: '#E0E7FF', // Same background color as default for hover
+        hoverColor: '#1E3A8A',   // Dark blue text for hover
+      },
     },
-  });
+    typography: {
+      htmlFontSize: 16,
+      fontFamily: 'Roboto, sans-serif',
+      h1: {
+        fontSize: 64,
+        fontWeight: 600,
+        marginBottom: 16,
+      },
+      h2: {
+        fontSize: 48,
+        fontWeight: 600,
+        marginBottom: 14,
+      },
+      h3: {
+        fontSize: 36,
+        fontWeight: 600,
+        marginBottom: 12,
+      },
+      h4: {
+        fontSize: 30,
+        fontWeight: 600,
+        marginBottom: 10,
+      },
+      h5: {
+        fontSize: 24,
+        fontWeight: 600,
+        marginBottom: 8,
+      },
+      h6: {
+        fontSize: 20,
+        fontWeight: 600,
+        marginBottom: 6,
+      },
+      body1: {
+        fontSize: 16,
+        lineHeight: 1.5,
+      },
+      body2: {
+        fontSize: 14,
+        lineHeight: 1.5,
+      },
+    },
+  }),
+  defaultPageTheme: 'home',
+  fontFamily: 'Roboto',
+  components: {
+    BackstageHeader: {
+      styleOverrides: {
+        header: ({ theme }) => ({
+          width: 'auto',
+          margin: '5px',
+          boxShadow: 'none',
+          borderBottom: `6px solid ${theme.palette.primary.main}`,
+        }),
+      },
+    },
+  },
+  pageTheme: {
+    home: genPageTheme({ colors: ['#1E3A8A', '#A52A2A'], shape: shapes.wave }),
+    documentation: genPageTheme({
+      colors: ['#2563EB', '#A52A2A'],
+      shape: shapes.wave2,
+    }),
+    tool: genPageTheme({ colors: ['#3B82F6', '#A52A2A'], shape: shapes.round }),
+    service: genPageTheme({
+      colors: ['#2563EB', '#1E3A8A'],
+      shape: shapes.wave,
+    }),
+    website: genPageTheme({
+      colors: ['#3B82F6', '#2563EB'],
+      shape: shapes.wave,
+    }),
+    library: genPageTheme({
+      colors: ['#1E3A8A', '#3B82F6'],
+      shape: shapes.wave,
+    }),
+    other: genPageTheme({ colors: ['#2563EB', '#3B82F6'], shape: shapes.wave }),
+    app: genPageTheme({ colors: ['#1E3A8A', '#3B82F6'], shape: shapes.wave }),
+    apis: genPageTheme({ colors: ['#2563EB', '#A52A2A'], shape: shapes.wave }),
+  },
+});
+
+
+
