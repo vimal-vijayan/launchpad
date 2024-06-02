@@ -44,12 +44,27 @@ import { UnifiedThemeProvider } from '@backstage/theme';
 import LightIcon from '@material-ui/icons/WbSunny';
 import { lightTheme } from './theme/lightTheme';
 import { darkTheme } from './theme/darkTheme';
+import { microsoftAuthApiRef } from '@backstage/core-plugin-api';
 
 // Import the sidebar CSS
 // import './theme/sidebar.css';
 
 const app = createApp({
   apis,
+  components: {
+    SignInPage: props => (
+      <SignInPage
+        {...props}
+        auto
+        provider={{
+          id: 'microsoft-auth-provider',
+          title: 'Microsoft',
+          message: 'Sign in using Microsoft',
+          apiRef: microsoftAuthApiRef,
+        }}
+      />
+    ),
+  },
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
@@ -67,9 +82,9 @@ const app = createApp({
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },
-  components: {
-    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
-  },
+  // components: {
+  //   SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
+  // },
   themes: [{
     id: 'light-theme',
     title: 'custom-light-theme',
