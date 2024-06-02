@@ -45,6 +45,7 @@ import LightIcon from '@material-ui/icons/WbSunny';
 import { lightTheme } from './theme/lightTheme';
 import { darkTheme } from './theme/darkTheme';
 import { microsoftAuthApiRef } from '@backstage/core-plugin-api';
+import { providers } from './components/singin/identityProviders';
 
 // Import the sidebar CSS
 // import './theme/sidebar.css';
@@ -56,14 +57,9 @@ const app = createApp({
       <SignInPage
         {...props}
         auto
-        provider={{
-          id: 'microsoft-auth-provider',
-          title: 'Microsoft',
-          message: 'Sign in using Microsoft',
-          apiRef: microsoftAuthApiRef,
-        }}
+        providers={providers}
       />
-    ),
+    )
   },
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
