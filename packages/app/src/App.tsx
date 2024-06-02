@@ -58,6 +58,7 @@ const app = createApp({
         {...props}
         auto
         providers={providers}
+        align='center'
       />
     )
   },
