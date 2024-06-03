@@ -28,6 +28,7 @@ backend.add(import('@backstage/plugin-catalog-backend/alpha'));
 backend.add(
   import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
 );
+backend.add(import('@backstage/plugin-catalog-backend-module-msgraph/alpha'));
 
 // permission plugin
 backend.add(import('@backstage/plugin-permission-backend/alpha'));
@@ -40,5 +41,6 @@ backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 backend.add(import('@backstage/plugin-auth-backend-module-okta-provider'));
+
 
 backend.start();

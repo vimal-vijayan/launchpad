@@ -83,14 +83,17 @@ auth:
         additionalScopes:
         - Mail.Send
         # signIn:
-        # - resolver: emailMatchingUserEntityAnnotation
-        # - resolver: emailMatchingUserEntityProfileEmail
-        # - resolver: emailLocalPartMatchingUserEntityName
+        #   resolvers:
+        #     - resolver: emailMatchingUserEntityAnnotation
+        #     - resolver: emailMatchingUserEntityProfileEmail
+        #     - resolver: emailLocalPartMatchingUserEntityName
         # # see https://backstage.io/docs/auth/ to learn about auth providers
         # # See https://backstage.io/docs/auth/guest/provider
     microsoftGraphOrg:
       default:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
+        clientId: ${AUTH_MICROSOFT_CLIENT_ID}
+        clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
         user: 
           filter: accountEnabled eq true and userType eq 'member'
         group:
@@ -138,10 +141,28 @@ auth:
 catalog:
   providers:
     microsoftGraphOrg:
-      providerId:
-        target: https://graph.microsoft.com/v1.0
-        authority: https://login.microsoftonline.com
+      default:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
         clientId: ${AUTH_MICROSOFT_CLIENT_ID}
         clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
-        queryMode: basic
+        user:
+          filter: accountEnabled eq true and userType eq 'member'
+        group:
+          filter: >
+            securityEnabled eq false
+            and mailEnabled eq true
+            and groupTypes/any(c:c+eq+'Unified')
+        schedule:
+          frequency: PT1H
+          timeout: PT50M
+
+# catalog:
+#   providers:
+#     microsoftGraphOrg:
+#       providerId:
+#         target: https://graph.microsoft.com/v1.0
+#         authority: https://login.microsoftonline.com
+#         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
+#         clientId: ${AUTH_MICROSOFT_CLIENT_ID}
+#         clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
+#         queryMode: basic

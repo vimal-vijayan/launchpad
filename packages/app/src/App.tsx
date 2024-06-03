@@ -44,7 +44,6 @@ import { UnifiedThemeProvider } from '@backstage/theme';
 import LightIcon from '@material-ui/icons/WbSunny';
 import { lightTheme } from './theme/lightTheme';
 import { darkTheme } from './theme/darkTheme';
-import { microsoftAuthApiRef } from '@backstage/core-plugin-api';
 import { providers } from './components/singin/identityProviders';
 
 // Import the sidebar CSS
@@ -62,6 +61,23 @@ const app = createApp({
       />
     )
   },
+  // bindRoutes({ bind }) {
+  //   bind(catalogPlugin.externalRoutes, {
+  //     createComponent: scaffolderPlugin.routes.root,
+  //     viewTechDoc: techdocsPlugin.routes.docRoot,
+  //     createFromTemplate: scaffolderPlugin.routes.selectedTemplate,
+  //   });
+  //   bind(apiDocsPlugin.externalRoutes, {
+  //     registerApi: catalogImportPlugin.routes.importPage,
+  //   });
+  //   bind(scaffolderPlugin.externalRoutes, {
+  //     registerComponent: catalogImportPlugin.routes.importPage,
+  //     viewTechDoc: techdocsPlugin.routes.docRoot,
+  //   });
+  //   bind(orgPlugin.externalRoutes, {
+  //     catalogIndex: catalogPlugin.routes.catalogIndex,
+  //   });
+  // },
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
@@ -102,8 +118,6 @@ const app = createApp({
   }]
 });
 
-// import { HomepageCompositionRoot } from '@backstage/plugin-home';
-// import { HomePage } from './components/home/HomePage';
 
 const routes = (
   <FlatRoutes>
