@@ -82,13 +82,7 @@ auth:
         domainHint: ${AUTH_MICROSOFT_TENANT_ID}
         additionalScopes:
         - Mail.Send
-        # signIn:
-        #   resolvers:
-        #     - resolver: emailMatchingUserEntityAnnotation
-        #     - resolver: emailMatchingUserEntityProfileEmail
-        #     - resolver: emailLocalPartMatchingUserEntityName
-        # # see https://backstage.io/docs/auth/ to learn about auth providers
-        # # See https://backstage.io/docs/auth/guest/provider
+        
     microsoftGraphOrg:
       default:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
@@ -105,28 +99,28 @@ auth:
           # scaffolder:
           # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
-# catalog:
-#   import:
-#     entityFilename: catalog-info.yaml
-#     pullRequestBranchName: backstage-integration
-#   rules:
-#   - allow: [Component, System, API, Resource, Location]
-#   locations:
-#   # Local example data, file locations are relative to the backend process, typically `packages/backend`
-#   - type: file
-#     target: ../../examples/entities.yaml
+catalog:
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+  - allow: [Component, System, API, Resource, Location]
+  locations:
+  # Local example data, file locations are relative to the backend process, typically `packages/backend`
+  - type: file
+    target: ../../examples/entities.yaml
 
-#   # Local example template
-#   - type: file
-#     target: ../../examples/template/template.yaml
-#     rules:
-#     - allow: [Template]
+  # Local example template
+  - type: file
+    target: ../../examples/template/template.yaml
+    rules:
+    - allow: [Template]
 
-#   # Local example organizational data
-#   - type: file
-#     target: ../../examples/org.yaml
-#     rules:
-#     - allow: [User, Group]
+  # Local example organizational data
+  - type: file
+    target: ../../examples/org.yaml
+    rules:
+    - allow: [User, Group]
 
 ## Uncomment these lines to add more example data
 # - type: url
@@ -138,23 +132,23 @@ auth:
 #   rules:
 #     - allow: [User, Group]
 
-catalog:
-  providers:
-    microsoftGraphOrg:
-      default:
-        tenantId: ${AUTH_MICROSOFT_TENANT_ID}
-        clientId: ${AUTH_MICROSOFT_CLIENT_ID}
-        clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
-        user:
-          filter: accountEnabled eq true and userType eq 'member'
-        group:
-          filter: >
-            securityEnabled eq false
-            and mailEnabled eq true
-            and groupTypes/any(c:c+eq+'Unified')
-        schedule:
-          frequency: PT1H
-          timeout: PT50M
+# catalog:
+#   providers:
+#     microsoftGraphOrg:
+#       default:
+#         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
+#         clientId: ${AUTH_MICROSOFT_CLIENT_ID}
+#         clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
+#         user:
+#           filter: accountEnabled eq true and userType eq 'member'
+#         group:
+#           filter: >
+#             securityEnabled eq false
+#             and mailEnabled eq true
+#             and groupTypes/any(c:c+eq+'Unified')
+#         schedule:
+#           frequency: PT1H
+#           timeout: PT50M
 
 # catalog:
 #   providers:
