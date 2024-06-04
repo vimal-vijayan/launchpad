@@ -83,6 +83,7 @@ auth:
         additionalScopes:
         - Mail.Send
         
+        
     microsoftGraphOrg:
       default:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}

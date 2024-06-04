@@ -46,52 +46,52 @@
  * limitations under the License.
  */
   
-import { createBackendModule } from '@backstage/backend-plugin-api';
-import {
-  DEFAULT_NAMESPACE,
-  stringifyEntityRef,
-} from '@backstage/catalog-model';
-import { microsoftAuthenticator } from '@backstage/plugin-auth-backend-module-microsoft-provider';
-import {
-  authProvidersExtensionPoint,
-  createOAuthProviderFactory,
-} from '@backstage/plugin-auth-node';
+// import { createBackendModule } from '@backstage/backend-plugin-api';
+// import {
+//   DEFAULT_NAMESPACE,
+//   stringifyEntityRef,
+// } from '@backstage/catalog-model';
+// import { microsoftAuthenticator } from '@backstage/plugin-auth-backend-module-microsoft-provider';
+// import {
+//   authProvidersExtensionPoint,
+//   createOAuthProviderFactory,
+// } from '@backstage/plugin-auth-node';
 
-export default createBackendModule({
-  pluginId: 'auth',
-  moduleId: 'microsoftProvider',
-  register(reg) {
-    reg.registerInit({
-      deps: { providers: authProvidersExtensionPoint },
-      async init({ providers }) {
-        providers.registerProvider({
-          providerId: 'microsoft',
-          factory: createOAuthProviderFactory({
-            authenticator: microsoftAuthenticator,
-            async signInResolver({ result: { fullProfile } }, ctx) {
-              const userId = fullProfile.oid;
-              if (!userId) {
-                throw new Error(
-                  `Azure user profile does not contain an object id`,
-                );
-              }
+// export default createBackendModule({
+//   pluginId: 'auth',
+//   moduleId: 'microsoftProvider',
+//   register(reg) {
+//     reg.registerInit({
+//       deps: { providers: authProvidersExtensionPoint },
+//       async init({ providers }) {
+//         providers.registerProvider({
+//           providerId: 'microsoft',
+//           factory: createOAuthProviderFactory({
+//             authenticator: microsoftAuthenticator,
+//             async signInResolver({ result: { fullProfile } }, ctx) {
+//               const userId = fullProfile.oid;
+//               if (!userId) {
+//                 throw new Error(
+//                   `Azure user profile does not contain an object id`,
+//                 );
+//               }
 
-              const userEntityRef = stringifyEntityRef({
-                kind: 'User',
-                name: userId,
-                namespace: DEFAULT_NAMESPACE,
-              });
+//               const userEntityRef = stringifyEntityRef({
+//                 kind: 'User',
+//                 name: userId,
+//                 namespace: DEFAULT_NAMESPACE,
+//               });
 
-              return ctx.issueToken({
-                claims: {
-                  sub: userEntityRef,
-                  ent: [userEntityRef],
-                },
-              });
-            },
-          }),
-        });
-      },
-    });
-  },
-});
+//               return ctx.issueToken({
+//                 claims: {
+//                   sub: userEntityRef,
+//                   ent: [userEntityRef],
+//                 },
+//               });
+//             },
+//           }),
+//         });
+//       },
+//     });
+//   },
+// });
