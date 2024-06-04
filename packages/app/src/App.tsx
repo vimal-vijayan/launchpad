@@ -61,23 +61,6 @@ const app = createApp({
       />
     )
   },
-  // bindRoutes({ bind }) {
-  //   bind(catalogPlugin.externalRoutes, {
-  //     createComponent: scaffolderPlugin.routes.root,
-  //     viewTechDoc: techdocsPlugin.routes.docRoot,
-  //     createFromTemplate: scaffolderPlugin.routes.selectedTemplate,
-  //   });
-  //   bind(apiDocsPlugin.externalRoutes, {
-  //     registerApi: catalogImportPlugin.routes.importPage,
-  //   });
-  //   bind(scaffolderPlugin.externalRoutes, {
-  //     registerComponent: catalogImportPlugin.routes.importPage,
-  //     viewTechDoc: techdocsPlugin.routes.docRoot,
-  //   });
-  //   bind(orgPlugin.externalRoutes, {
-  //     catalogIndex: catalogPlugin.routes.catalogIndex,
-  //   });
-  // },
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
@@ -95,9 +78,8 @@ const app = createApp({
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },
-  // components: {
-  //   SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
-  // },
+  
+
   themes: [{
     id: 'light-theme',
     title: 'custom-light-theme',
@@ -118,13 +100,9 @@ const app = createApp({
   }]
 });
 
-
 const routes = (
   <FlatRoutes>
     <Route path="/" element={<Navigate to="catalog" />} />
-    {/* <Route path="/" element={<HomepageCompositionRoot />}>
-      <HomePage />
-    </Route> */}
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"

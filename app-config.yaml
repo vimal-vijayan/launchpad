@@ -28,27 +28,35 @@ backend:
     #   # Uncomment the following host directive to bind to specific interfaces
     #   # host: 127.0.0.1
   csp:
-    connect-src: ["'self'", 'http:', 'https:']
+    connect-src: ["'self'", "http:", "https:"]
     #   # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     #   # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: http://localhost:7007
+    origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
-    credentials: true
-    Access-Control-Allow-Origin: '*'
+    credentials: false
+    Access-Control-Allow-Origin: "*"
     # This is for local development only, it is not recommended to use this in production
     # The production database configuration is stored in app-config.production.yaml
 
 integrations:
-  github:
-  - host: github.com
-    # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
-    # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
-    token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
+  # Replace personal access token with client id  (only for development)
+  azure:
+    - host: dev.azure.com
+      credentials:
+        - personalAccessToken: ${PERSONAL_ACCESS_TOKEN}
+        # - clientId: ${AZURE_CLIENT_ID}
+        #   clientSecret: ${AZURE_CLIENT_SECRET}
+        #   tenantId: ${AZURE_TENANT_ID
+  # github:
+  #   - host: github.com
+  # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
+  # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
+  # token: ${GITHUB_TOKEN}
+  ### Example for how to add your GitHub Enterprise instance using the API:
+  # - host: ghe.example.net
+  #   apiBaseUrl: https://ghe.example.net/api/v3
+  #   token: ${GHE_TOKEN}
 
 # proxy:
 ### Example for how to add a proxy endpoint for the frontend.
@@ -63,17 +71,14 @@ integrations:
 # and an external cloud storage when deploying TechDocs for production use-case.
 # https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach
 techdocs:
-  builder: 'local' # Alternatives - 'external'
+  builder: "local" # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: "docker" # Alternatives - 'local'
   publisher:
-    type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
-
+    type: "local" # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
-
   providers:
-
     microsoft:
       development:
         clientId: ${AUTH_MICROSOFT_CLIENT_ID}
@@ -81,15 +86,14 @@ auth:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
         domainHint: ${AUTH_MICROSOFT_TENANT_ID}
         additionalScopes:
-        - Mail.Send
-        
-        
+          - Mail.Send
+
     microsoftGraphOrg:
       default:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
         clientId: ${AUTH_MICROSOFT_CLIENT_ID}
         clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
-        user: 
+        user:
           filter: accountEnabled eq true and userType eq 'member'
         group:
           filter: >
@@ -105,24 +109,23 @@ catalog:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-  - allow: [Component, System, API, Resource, Location]
+    - allow: [Component, System, API, Resource, Location]
   locations:
-  # Local example data, file locations are relative to the backend process, typically `packages/backend`
-  - type: file
-    target: ../../examples/entities.yaml
-
-  # Local example template
-  - type: file
-    target: ../../examples/template/template.yaml
-    rules:
-    - allow: [Template]
-
-  # Local example organizational data
-  - type: file
-    target: ../../examples/org.yaml
-    rules:
-    - allow: [User, Group]
-
+    # Local example data, file locations are relative to the backend process, typically `packages/backend`
+    - type: url
+      target: https://dev.azure.com/essity-projects/Essity%20Templates/_git/backstage-templates?path=/catalog/sample/example-nodejs-template.yaml
+    # - type: file
+    #   target: ../../examples/entities.yaml
+    # Local example template
+    # - type: file
+    #   target: ../../examples/template/template.yaml
+    #   rules:
+    #     - allow: [Template]
+    # Local example organizational data
+    # - type: file
+    # target: ../../examples/org.yaml
+    # rules:
+    #   - allow: [User, Group]
 ## Uncomment these lines to add more example data
 # - type: url
 #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml

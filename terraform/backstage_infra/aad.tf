@@ -4,7 +4,7 @@ resource "azuread_application" "app" {
   display_name    = "spa-backstage-${local.workspace.env}-auth"
   identifier_uris = ["api://backstage-${local.workspace.env}"]
   logo_image      = filebase64("./backstage-logo.png")
-  owners          = [data.azuread_client_config.current.object_id]
+  owners          = [data.azuread_client_config.current.object_id, "d465b749-c2c2-47cb-bfbd-af14496761d5"]
   tags = [
 		"EssityDescription:Used for backstage app authentication",
 		"EssityOwner:vimal.vijayan@essity.com",
