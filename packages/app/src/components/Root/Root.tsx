@@ -68,84 +68,7 @@ const SidebarLogo = () => {
   );
 };
 
-// export const Root = ({ children }: PropsWithChildren<{}>) => (
-//   <SidebarPage>
-//     <Sidebar>
-//       <SidebarLogo />
-//       <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
-//         <SidebarSearchModal />
-//       </SidebarGroup>
-//       <SidebarDivider />
-//       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-//         <SidebarItem icon={HomeIcon} to="catalog" text="Home">
-//           <SidebarSubmenu title="Catalog">
-//             <SidebarSubmenuItem
-//               title="Domains"
-//               to="catalog?filters[kind]=domain"
-//               icon={useApp().getSystemIcon('kind:domain')}
-//             />
-//             <SidebarSubmenuItem
-//               title="Systems"
-//               to="catalog?filters[kind]=system"
-//               icon={useApp().getSystemIcon('kind:system')}
-//             />
-//             <SidebarSubmenuItem
-//               title="Components"
-//               to="catalog?filters[kind]=component"
-//               icon={useApp().getSystemIcon('kind:component')}
-//             />
-//             <SidebarSubmenuItem
-//               title="APIs"
-//               to="api-docs"
-//               // to="catalog?filters[kind]=api"
-//               icon={useApp().getSystemIcon('kind:api')}
-//             />
-//             <SidebarDivider />
-//             <SidebarSubmenuItem
-//               title="Resources"
-//               to="catalog?filters[kind]=resource"
-//               icon={useApp().getSystemIcon('kind:resource')}
-//             />
-//             <SidebarDivider />
-//             <SidebarSubmenuItem
-//               title="Groups"
-//               to="catalog?filters[kind]=group"
-//               icon={useApp().getSystemIcon('kind:group')}
-//             />
-//             <SidebarSubmenuItem
-//               title="Users"
-//               to="catalog?filters[kind]=user"
-//               icon={useApp().getSystemIcon('kind:user')}
-//             />
-//             <SidebarSubmenuItem
-//               title="Templates"
-//               to="catalog?filters[kind]=template"
-//               icon={useApp().getSystemIcon('kind:template')}
-//             />
-//           </SidebarSubmenu>
-//         </SidebarItem>
-//         <SidebarItem icon={CategoryIcon} to="catalog" text="Catalog" />
-//         <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-//         <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-//         <SidebarItem icon={CreateComponentIcon} to="create" text="Create" />
-//         <SidebarDivider />
-//         <SidebarScrollWrapper>
-//           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
-//         </SidebarScrollWrapper>
-//       </SidebarGroup>
-//       <SidebarSpace />
-//       <SidebarDivider />
-//       <SidebarGroup
-//         label="Settings"
-//         icon={<UserSettingsSignInAvatar />}
-//         to="/settings"
-//       >
-//         <SidebarSettings />
-//       </SidebarGroup>
-//     </Sidebar>
-//     {children}
-//   </SidebarPage>
-// );
+
 
 export const Root = ({ children }: PropsWithChildren<{}>) => (
   <SidebarPage>
@@ -157,7 +80,48 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
         {/* Global nav, not org-specific */}
-        <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
+        {/* <SidebarItem icon={HomeIcon} to="catalog" text="Home" /> */}
+        <SidebarItem icon={HomeIcon} to="catalog" text="Home">
+          <SidebarSubmenu title="Essity Catalog">
+            <SidebarSubmenuItem
+              title="Domains"
+              to="catalog?filters[kind]=domain"
+              icon={useApp().getSystemIcon('kind:domain')}
+            />
+            <SidebarSubmenuItem
+              title="Systems"
+              to="catalog?filters[kind]=system"
+              icon={useApp().getSystemIcon('kind:system')}
+            />
+            <SidebarSubmenuItem
+              title="Components"
+              to="catalog?filters[kind]=component"
+              icon={useApp().getSystemIcon('kind:component')}
+            />
+            <SidebarSubmenuItem
+              title="APIs"
+              to="catalog?filters[kind]=api"
+              icon={useApp().getSystemIcon('kind:api')}
+            />
+            <SidebarDivider />
+            <SidebarSubmenuItem
+              title="Resources"
+              to="catalog?filters[kind]=resource"
+              icon={useApp().getSystemIcon('kind:resource')}
+            />
+            <SidebarDivider />
+            <SidebarSubmenuItem
+              title="Groups"
+              to="catalog?filters[kind]=group"
+              icon={useApp().getSystemIcon('kind:group')}
+            />
+            <SidebarSubmenuItem
+              title="Users"
+              to="catalog?filters[kind]=user"
+              icon={useApp().getSystemIcon('kind:user')}
+            />
+          </SidebarSubmenu>
+        </SidebarItem>
         <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
         <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
         <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
