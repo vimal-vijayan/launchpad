@@ -40,6 +40,9 @@ backend:
     # The production database configuration is stored in app-config.production.yaml
 
 integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
   # Replace personal access token with client id  (only for development)
   azure:
     - host: dev.azure.com
@@ -117,7 +120,9 @@ catalog:
     - type: file
       target: ../../examples/template/template.yaml # Backstage will expect the file to be in packages/backend/template.yaml
     - type: url
-      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/components/artist-lookup-component.yaml
+      target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/templates/nodejs/template.yaml
+      rules:
+        - allow: [Template]
 
     # - type: file
     #   target: ../../examples/entities.yaml
