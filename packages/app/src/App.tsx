@@ -49,6 +49,9 @@ import { providers } from './components/singin/identityProviders';
 // Import the sidebar CSS
 // import './theme/sidebar.css';
 
+//Cost Insights
+import { CostInsightsPage } from '@backstage-community/plugin-cost-insights';
+
 const app = createApp({
   apis,
   components: {
@@ -134,6 +137,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/cost-insights" element={<CostInsightsPage />} />
   </FlatRoutes>
 );
 

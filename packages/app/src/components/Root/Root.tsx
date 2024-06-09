@@ -14,6 +14,7 @@ import { TemplateTypePicker } from '@backstage/plugin-scaffolder';
 // Custom Logo Components
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
+import MoneyIcon from '@material-ui/icons/MonetizationOn'
 
 // Sidebar Plugins and Components
 import {
@@ -128,6 +129,9 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
         {/* End global nav */}
         <SidebarDivider />
+        <SidebarScrollWrapper>
+          <SidebarItem icon={MoneyIcon} to="cost-insights" text="Cost Insights"/>
+        </SidebarScrollWrapper>
         <SidebarScrollWrapper>
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
