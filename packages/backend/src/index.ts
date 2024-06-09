@@ -15,37 +15,38 @@ import {
 } from '@backstage/plugin-auth-node';
 import { stringifyEntityRef, DEFAULT_NAMESPACE } from '@backstage/catalog-model';
 
+// Initialize the backend
 const backend = createBackend();
 
+// Add core plugins
 backend.add(import('@backstage/plugin-app-backend/alpha'));
 backend.add(import('@backstage/plugin-proxy-backend/alpha'));
 backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));
 backend.add(import('@backstage/plugin-techdocs-backend/alpha'));
 
-// auth plugin
+// Add authentication plugins
 backend.add(import('@backstage/plugin-auth-backend'));
 backend.add(import('@backstage/plugin-auth-backend-module-guest-provider'));
 
-// Do not add the default microsoft provider to avoid duplication
-// backend.add(import('@backstage/plugin-auth-backend-module-microsoft-provider'));
-
-// catalog plugin
+// Catalog plugins
 backend.add(import('@backstage/plugin-catalog-backend/alpha'));
 backend.add(
   import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
 );
 backend.add(import('@backstage/plugin-catalog-backend-module-msgraph/alpha'));
 
-// permission plugin
+// Permission plugins
 backend.add(import('@backstage/plugin-permission-backend/alpha'));
 backend.add(
   import('@backstage/plugin-permission-backend-module-allow-all-policy'),
 );
 
-// search plugin
+// Search plugins
 backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
+
+// Add other auth providers
 backend.add(import('@backstage/plugin-auth-backend-module-okta-provider'));
 
 // Custom Microsoft Auth Provider
@@ -89,4 +90,8 @@ const customMicrosoftAuth = createBackendModule({
 
 backend.add(customMicrosoftAuth);
 
+// Add scaffolder backend module for GitHub
+backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
+
+// Start the backend
 backend.start();
