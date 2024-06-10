@@ -6,12 +6,12 @@ resource "azuread_application" "app" {
   logo_image      = filebase64("./backstage-logo.png")
   owners          = [data.azuread_client_config.current.object_id, "d465b749-c2c2-47cb-bfbd-af14496761d5"]
   tags = [
-		"EssityDescription:Used for backstage app authentication",
-		"EssityOwner:vimal.vijayan@essity.com",
+    "EssityDescription:Used for backstage app authentication",
+    "EssityOwner:vimal.vijayan@essity.com",
     "keyvault:${azurerm_key_vault.kv.name}",
     "ClientId:auth-client-id",
     "Secret:auth-client-secret"
-	]
+  ]
 
   required_resource_access {
     resource_app_id = "00000003-0000-0000-c000-000000000000"
@@ -76,4 +76,12 @@ resource "azurerm_key_vault_secret" "client_secret" {
   name         = "auth-client-secret"
   value        = azuread_service_principal_password.secret.value
   key_vault_id = azurerm_key_vault.kv.id
+}
+
+
+# Azure ad groups for backstage membership
+resource "azuread_group" "launchpad_membership" {
+  display_name     = "co-idp-launchpad-dev"
+  owners           = [data.azuread_client_config.current.object_id]
+  security_enabled = true
 }
