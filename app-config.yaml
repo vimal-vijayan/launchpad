@@ -102,11 +102,14 @@ catalog:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
         clientId: ${AUTH_MICROSOFT_CLIENT_ID}
         clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
-        user:
-          filter: accountEnabled eq true and userType eq 'member'
-        group:
-          filter: >
-            securityEnabled eq false and mailEnabled eq true and groupTypes/any(c:c+eq+'Unified')
+        userGroupMember:
+          filter: "displayName eq 'co-idp-launchpad-dev'"
+          search: '"displayName:co-idp-launchpad-dev"'
+        # user:
+        #   filter: accountEnabled eq true and userType eq 'member'
+        # group:
+        #   filter: >
+        #     securityEnabled eq false and mailEnabled eq true and groupTypes/any(c:c+eq+'co-idp-launchpad-dev')
         schedule:
           frequency: PT1H
           timeout: PT50M

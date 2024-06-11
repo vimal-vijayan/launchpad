@@ -51,6 +51,7 @@ import { providers } from './components/singin/identityProviders';
 
 //Cost Insights
 import { CostInsightsPage } from '@backstage-community/plugin-cost-insights';
+import { greenTheme } from './theme/greenTheme';
 
 const app = createApp({
   apis,
@@ -100,7 +101,17 @@ const app = createApp({
     Provider: ({ children }) => (
       <UnifiedThemeProvider theme={darkTheme} children={children} />
     ),
-  }]
+  },
+  {
+    id: 'go-green',
+    title: 'go-green-theme',
+    variant: 'light',
+    icon: <LightIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={greenTheme} children={children} />
+    ),
+  }
+]
 });
 
 const routes = (
