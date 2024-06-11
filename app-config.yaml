@@ -77,7 +77,7 @@ techdocs:
   builder: "local" # Alternatives - 'external'
   generator:
     runIn: "docker" # Alternatives - 'local'
-  publisher:
+  publisher:  
     type: "local" # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
@@ -122,8 +122,8 @@ catalog:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: url
       target: https://dev.azure.com/essity-projects/Essity%20Templates/_git/backstage-templates?path=/catalog/sample/example-nodejs-template.yaml
-    - type: file
-      target: ../../examples/template/template.yaml # Backstage will expect the file to be in packages/backend/template.yaml
+    # - type: file
+    #   target: ../../examples/template/template.yaml # Backstage will expect the file to be in packages/backend/template.yaml
     - type: url
       target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/templates/nodejs/template.yaml
       rules:

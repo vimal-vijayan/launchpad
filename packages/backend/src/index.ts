@@ -17,6 +17,7 @@ backend.add(import('@backstage/plugin-proxy-backend/alpha'));
 backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));
 backend.add(import('@backstage/plugin-techdocs-backend/alpha'));
 
+
 // Add authentication plugins
 backend.add(import('@backstage/plugin-auth-backend'));
 backend.add(import('@backstage/plugin-auth-backend-module-guest-provider'));
@@ -46,6 +47,9 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
 // Add scaffolder backend module for GitHub
 backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
+
+// add scaffolder backend module for azure devops
+backend.add(import('@backstage/plugin-scaffolder-backend-module-azure'));
 
 
 // Start the backend
