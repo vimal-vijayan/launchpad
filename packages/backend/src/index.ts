@@ -52,5 +52,34 @@ backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
 backend.add(import('@backstage/plugin-scaffolder-backend-module-azure'));
 
 
+//custom azure pipeline action
+import { runAzurePipelineAction } from './plugins/scaffolder/actions/runAzurePipeline';
+import { createBackendModule } from '@backstage/backend-plugin-api';
+import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';
+
+// Custom Scaffolder Module with Custom Actions
+
+const scaffolderModuleCustomExtensions = createBackendModule({
+  pluginId: 'scaffolder',
+  moduleId: 'custom-extensions',
+  register(env) {
+    env.registerInit({
+      deps: {
+        scaffolder: scaffolderActionsExtensionPoint,
+      },
+      async init({ scaffolder }) {
+        // Add the custom Azure Pipeline Action
+        scaffolder.addActions(runAzurePipelineAction({} as any))
+        // scaffolder.addActions(runAzurePipelineAction({
+        //   integrations: env.scmIntegrationsRegistry,
+        // }));
+      },  
+    });
+  },
+});
+
+// Add the custom scaffolder module
+backend.add(scaffolderModuleCustomExtensions);
+
 // Start the backend
 backend.start();
