@@ -101,10 +101,10 @@ catalog:
         schedule:
           frequency: PT1M #TODO: Change to a higher frequency
           timeout: PT5M #TODO: Change to a higher timeout
-    # github:
-    #   Experimental:
-    #     organization: "vimal-vijayan"
-
+    github:
+      Experimental:
+        organization: "vimal-vijayan"
+        #FIXME: Change the organization name
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
