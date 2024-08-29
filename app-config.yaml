@@ -78,8 +78,6 @@ auth:
           - Mail.Send
         cookieDomain:
           localhost # or the domain in production
-
-
           # scaffolder:
           # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
@@ -103,6 +101,10 @@ catalog:
         schedule:
           frequency: PT1M #TODO: Change to a higher frequency
           timeout: PT5M #TODO: Change to a higher timeout
+    # github:
+    #   Experimental:
+    #     organization: "vimal-vijayan"
+
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
@@ -122,13 +124,15 @@ catalog:
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: url
-      target: https://dev.azure.com/essity-projects/Essity%20Templates/_git/backstage-templates?path=/catalog/sample/example-nodejs-template.yaml
-
-    - type: url
-      target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/templates/nodejs/template.yaml
+      target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/templates/template.yaml
       rules:
         - allow: [Template]
 
+    # - type: url
+    #   target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/template.yaml
+    #   rules:
+    #     - allow: [Template]
+    
 ## Uncomment these lines to add more example data
 # - type: url
 #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
@@ -142,7 +146,6 @@ catalog:
 ## Cost insights
 costInsights:
   engineerCost: 200000
-
 
 scaffolder:
   defaultAuthor:
