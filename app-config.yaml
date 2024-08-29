@@ -142,3 +142,10 @@ catalog:
 ## Cost insights
 costInsights:
   engineerCost: 200000
+
+
+scaffolder:
+  defaultAuthor:
+    name: Scaffolder
+    email: scaffolder@backstage.io # Defaults to `scaffolder@backstage.io`
+  defaultCommitMessage: "Initial commit" # Defaults to 'Initial commit'
