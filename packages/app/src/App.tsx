@@ -38,8 +38,6 @@ import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
 // Theme
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { UnifiedThemeProvider } from '@backstage/theme';
 import LightIcon from '@material-ui/icons/WbSunny';
 import { lightTheme } from './theme/lightTheme';
@@ -49,8 +47,6 @@ import { providers } from './components/singin/identityProviders';
 // Import the sidebar CSS
 // import './theme/sidebar.css';
 
-//Cost Insights
-import { CostInsightsPage } from '@backstage-community/plugin-cost-insights';
 import { greenTheme } from './theme/greenTheme';
 
 const app = createApp({
@@ -148,7 +144,6 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
-    <Route path="/cost-insights" element={<CostInsightsPage />} />
   </FlatRoutes>
 );
 
