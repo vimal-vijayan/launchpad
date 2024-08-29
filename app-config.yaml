@@ -106,8 +106,8 @@ catalog:
           filter: "displayName eq 'co-idp-launchpad-dev'"
           search: '"displayName:co-idp-launchpad-dev"'
         schedule:
-          frequency: PT1M
-          timeout: PT5M
+          frequency: PT1M #TODO: Change to a higher frequency
+          timeout: PT5M #TODO: Change to a higher timeout
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
