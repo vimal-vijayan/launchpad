@@ -51,35 +51,37 @@ backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
 // add scaffolder backend module for azure devops
 backend.add(import('@backstage/plugin-scaffolder-backend-module-azure'));
 
+// azure repo plugin
+backend.add(import('@parfuemerie-douglas/scaffolder-backend-module-azure-repositories'))
 
 //custom azure pipeline action
-import { runAzurePipelineAction } from './plugins/scaffolder/actions/runAzurePipeline';
-import { createBackendModule } from '@backstage/backend-plugin-api';
-import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';
+// import { runAzurePipelineAction } from './plugins/scaffolder/actions/runAzurePipeline';
+// import { createBackendModule } from '@backstage/backend-plugin-api';
+// import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';
 
 // Custom Scaffolder Module with Custom Actions
 
-const scaffolderModuleCustomExtensions = createBackendModule({
-  pluginId: 'scaffolder',
-  moduleId: 'custom-extensions',
-  register(env) {
-    env.registerInit({
-      deps: {
-        scaffolder: scaffolderActionsExtensionPoint,
-      },
-      async init({ scaffolder }) {
-        // Add the custom Azure Pipeline Action
-        scaffolder.addActions(runAzurePipelineAction({} as any))
-        // scaffolder.addActions(runAzurePipelineAction({
-        //   integrations: env.scmIntegrationsRegistry,
-        // }));
-      },  
-    });
-  },
-});
+// const scaffolderModuleCustomExtensions = createBackendModule({
+//   pluginId: 'scaffolder',
+//   moduleId: 'custom-extensions',
+//   register(env) {
+//     env.registerInit({
+//       deps: {
+//         scaffolder: scaffolderActionsExtensionPoint,
+//       },
+//       async init({ scaffolder }) {
+//         // Add the custom Azure Pipeline Action
+//         scaffolder.addActions(runAzurePipelineAction({} as any))
+//         // scaffolder.addActions(runAzurePipelineAction({
+//         //   integrations: env.scmIntegrationsRegistry,
+//         // }));
+//       },  
+//     });
+//   },
+// });
 
 // Add the custom scaffolder module
-backend.add(scaffolderModuleCustomExtensions);
+// backend.add(scaffolderModuleCustomExtensions);
 
 // Start the backend
 backend.start();
