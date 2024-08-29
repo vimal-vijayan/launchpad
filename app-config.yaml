@@ -16,12 +16,6 @@ backend:
       password: ${PSQL_PASSWORD}
       ssl: ${PSQL_SSL}
 
-    # Used for enabling authentication, secret is shared by all backend plugins
-    # See https://backstage.io/docs/auth/service-to-service-auth for
-    # information on the format
-    # auth:
-    #   keys:
-    #     - secret: ${BACKEND_SECRET}
   baseUrl: http://localhost:7007
   listen:
     port: 7007
@@ -34,7 +28,7 @@ backend:
   cors:
     origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
-    credentials: false
+    credentials: true
     Access-Control-Allow-Origin: "*"
     # This is for local development only, it is not recommended to use this in production
     # The production database configuration is stored in app-config.production.yaml
@@ -77,7 +71,7 @@ techdocs:
   builder: "local" # Alternatives - 'external'
   generator:
     runIn: "docker" # Alternatives - 'local'
-  publisher:  
+  publisher:
     type: "local" # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
@@ -90,7 +84,7 @@ auth:
         domainHint: ${AUTH_MICROSOFT_TENANT_ID}
         additionalScopes:
           - Mail.Send
-
+        cookieDomain: localhost # or the domain in production
 
           # scaffolder:
           # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -102,22 +96,34 @@ catalog:
         tenantId: ${AUTH_MICROSOFT_TENANT_ID}
         clientId: ${AUTH_MICROSOFT_CLIENT_ID}
         clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
+        queryMode: basic
+        user:
+          loadPhotos: true
+        group:
+          # filter: securityEnabled eq true
+          search: '"displayName:co-idp-launchpad-dev"'
         userGroupMember:
           filter: "displayName eq 'co-idp-launchpad-dev'"
           search: '"displayName:co-idp-launchpad-dev"'
-        # user:
-        #   filter: accountEnabled eq true and userType eq 'member'
-        # group:
-        #   filter: >
-        #     securityEnabled eq false and mailEnabled eq true and groupTypes/any(c:c+eq+'co-idp-launchpad-dev')
         schedule:
-          frequency: PT1H
-          timeout: PT50M
+          frequency: PT1M
+          timeout: PT5M
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-    - allow: [Component, System, API, Resource, Location, Template]
+    - allow:
+        [
+          Component,
+          System,
+          API,
+          Resource,
+          Location,
+          Template,
+          User,
+          Group,
+          Domain,
+        ]
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: url
@@ -129,18 +135,6 @@ catalog:
       rules:
         - allow: [Template]
 
-    # - type: file
-    #   target: ../../examples/entities.yaml
-    # Local example template
-    # - type: file
-    #   target: ../../examples/template/template.yaml
-    #   rules:
-    #     - allow: [Template]
-    # Local example organizational data
-    # - type: file
-    # target: ../../examples/org.yaml
-    # rules:
-    #   - allow: [User, Group]
 ## Uncomment these lines to add more example data
 # - type: url
 #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
@@ -150,8 +144,6 @@ catalog:
 #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
 #   rules:
 #     - allow: [User, Group]
-
-
 
 ## Cost insights
 costInsights:
