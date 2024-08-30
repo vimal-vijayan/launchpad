@@ -110,15 +110,6 @@ catalog:
         schedule:
           frequency: { minutes: 10 }
           timeout: { minutes: 10 }
-      personal:
-        organization: "vimal-vijayan"
-        catalogPath: './catalog-info.yaml'
-        filters:
-          branch: 'main'
-          repository: '.*'
-      schedule:
-          frequency: { minutes: 10 }
-          timeout: { minutes: 10 }
       templateProvider:
         organization: "prooptimus"
         catalogPath: '/templates/**/*template.yaml'
