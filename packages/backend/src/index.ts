@@ -45,6 +45,10 @@ backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
+//event plugins
+backend.add(import('@backstage/plugin-events-backend/alpha'));
+backend.add(import('@backstage/plugin-catalog-backend-module-logs'));
+
 // Add scaffolder backend module for GitHub
 backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
 
