@@ -37,15 +37,14 @@ integrations:
   github:
     - host: github.com
       token: ${GITHUB_TOKEN}
+    - host: github.com
+      token: ${PRO_OPTIMUS_GITHUB_TOKEN}
 
   # Replace personal access token with client id if possible
   azure:
     - host: dev.azure.com
       credentials:
         - personalAccessToken: ${PERSONAL_ACCESS_TOKEN}
-        # - clientId: ${AZURE_CLIENT_ID}
-        #   clientSecret: ${AZURE_CLIENT_SECRET}
-        #   tenantId: ${AZURE_TENANT_ID
 
 # proxy:
 ### Example for how to add a proxy endpoint for the frontend.
@@ -94,18 +93,41 @@ catalog:
         user:
           loadPhotos: true
         group:
-          # filter: securityEnabled eq true
           search: '"displayName:co-idp-launchpad-dev"'
         userGroupMember:
           filter: "displayName eq 'co-idp-launchpad-dev'"
           search: '"displayName:co-idp-launchpad-dev"'
         schedule:
-          frequency: PT1M #TODO: Change to a higher frequency
-          timeout: PT5M #TODO: Change to a higher timeout
+          frequency: PT01H
+          timeout: PT10M
     github:
       Experimental:
         organization: "vimal-vijayan"
-        #FIXME: Change the organization name
+        catalogPath: './catalog-info.yaml'
+        filters:
+          branch: 'main'
+          repository: '.*'
+        schedule:
+          frequency: { minutes: 10 }
+          timeout: { minutes: 10 }
+      personal:
+        organization: "vimal-vijayan"
+        catalogPath: './catalog-info.yaml'
+        filters:
+          branch: 'main'
+          repository: '.*'
+      schedule:
+          frequency: { minutes: 10 }
+          timeout: { minutes: 10 }
+      templateProvider:
+        organization: "prooptimus"
+        catalogPath: '/templates/**/*template.yaml'
+        filters:
+          branch: 'main'
+          repository: '.*'
+        schedule:
+          frequency: { minutes: 1 } #TODO: Change to a higher frequency
+          timeout: { minutes: 10 }
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
@@ -128,6 +150,10 @@ catalog:
       target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/templates/template.yaml
       rules:
         - allow: [Template]
+    # - type: url
+    #   target: https://github.com/prooptimus/backstage.templates/blob/main/templates/resource-group-template.yaml
+    #   rules:
+    #     - allow: [Template]
 
     # - type: url
     #   target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/template.yaml
@@ -144,12 +170,8 @@ catalog:
 #   rules:
 #     - allow: [User, Group]
 
-## Cost insights
-costInsights:
-  engineerCost: 200000
-
 scaffolder:
   defaultAuthor:
     name: Scaffolder
-    email: scaffolder@backstage.io # Defaults to `scaffolder@backstage.io`
-  defaultCommitMessage: "Initial commit" # Defaults to 'Initial commit'
+    email: scaffolder@backstage.io
+  defaultCommitMessage: "Initial commit"
