@@ -101,21 +101,21 @@ catalog:
           frequency: PT01H
           timeout: PT10M
     github:
-      Experimental:
-        organization: "vimal-vijayan"
-        catalogPath: './catalog-info.yaml'
-        filters:
-          branch: 'main'
-          repository: '.*'
-        schedule:
-          frequency: { minutes: 10 }
-          timeout: { minutes: 10 }
+      # Experimental:
+      #   organization: "vimal-vijayan"
+      #   catalogPath: './catalog-info.yaml'
+      #   filters:
+      #     branch: 'main'
+      #     repository: '.*'
+      #   schedule:
+      #     frequency: { minutes: 10 }
+      #     timeout: { minutes: 10 }
       templateProvider:
         organization: "prooptimus"
         catalogPath: '/templates/**/*template.yaml'
         filters:
           branch: 'main'
-          repository: '.*'
+          repository: 'backstage.templates'
         schedule:
           frequency: { minutes: 1 } #TODO: Change to a higher frequency
           timeout: { minutes: 10 }
