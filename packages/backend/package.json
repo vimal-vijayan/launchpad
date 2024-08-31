@@ -44,7 +44,7 @@
     "@backstage/plugin-search-backend-module-catalog": "^0.2.2-next.0",
     "@backstage/plugin-search-backend-module-techdocs": "^0.2.2-next.0",
     "@backstage/plugin-search-backend-node": "^1.3.2-next.0",
-    "@backstage/plugin-techdocs-backend": "^1.10.13-next.0",
+    "@backstage/plugin-techdocs-backend": "^1.10.12",
     "@janus-idp/backstage-plugin-feedback-backend": "^1.3.8",
     "@parfuemerie-douglas/scaffolder-backend-module-azure-pipelines": "^1.2.1",
     "@parfuemerie-douglas/scaffolder-backend-module-azure-repositories": "^0.3.0",
