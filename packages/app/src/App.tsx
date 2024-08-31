@@ -139,6 +139,11 @@ const routes = (
               filter: entity =>
                 entity?.metadata?.tags?.includes('recommended') ?? false,
             },
+            {
+              title: "IAM",
+              filter: entity =>
+                entity?.metadata?.tags?.includes('IAM') ?? false,
+            }
           ]}
         />
       }
