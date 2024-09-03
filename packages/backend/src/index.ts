@@ -7,9 +7,36 @@
  */
 
 import { createBackend } from '@backstage/backend-defaults';
+import { RootHealthService, coreServices, createServiceFactory } from '@backstage/backend-plugin-api'; 
+// Import createServiceFactory
+
 
 // Initialize the backend
 const backend = createBackend();
+
+// health check
+class MyRootHealthService implements RootHealthService {
+  async getLiveness() {
+    // provide your own implementation
+    return { status: 200, payload: { status: 'ok' } };
+  }
+
+  async getReadiness() {
+    // provide your own implementation
+    return { status: 200, payload: { status: 'ok' } };
+  }
+}
+
+backend.add(
+  createServiceFactory({
+    service: coreServices.rootHealth,
+    deps: {},
+    async factory({}) {
+      return new MyRootHealthService();
+    },
+  }),
+);
+
 
 // Add core plugins
 backend.add(import('@backstage/plugin-app-backend/alpha'));
