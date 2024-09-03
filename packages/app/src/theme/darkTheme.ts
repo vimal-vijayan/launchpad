@@ -57,48 +57,48 @@ import {
           fontSize: 64,
           fontWeight: 600,
           marginBottom: 16,
-          color: '#FFFFFF', // White for better contrast
+          // color: '#FFFFFF', // White for better contrast
         },
         h2: {
           fontSize: 48,
           fontWeight: 600,
           marginBottom: 14,
-          color: '#FFFFFF', // White for better contrast
+          // color: '#FFFFFF', // White for better contrast
         },
         h3: {
           fontSize: 36,
           fontWeight: 600,
           marginBottom: 12,
-          color: '#FFFFFF', // White for better contrast
+          // color: '#FFFFFF', // White for better contrast
         },
         h4: {
           fontSize: 30,
           fontWeight: 600,
           marginBottom: 10,
-          color: '#FFFFFF', // White for better contrast
+          // color: '#FFFFFF', // White for better contrast
         },
         h5: {
           fontSize: 24,
           fontWeight: 600,
           marginBottom: 8,
-          color: '#FFFFFF', // White for better contrast
+          // color: '#FFFFFF', // White for better contrast
         },
         h6: {
           fontSize: 20,
           fontWeight: 600,
           marginBottom: 6,
-          color: '#FFFFFF', // White for better contrast
+          // color: '#FFFFFF', // White for better contrast
         },
-        body1: {
-          fontSize: 16,
-          lineHeight: 1.5,
-          color: '#DDDDDD',  // Lighter text for readability
-        },
-        body2: {
-          fontSize: 14,
-          lineHeight: 1.5,
-          color: '#BBBBBB',  // Lighter text for secondary readability
-        },
+        // body1: {
+        //   fontSize: 16,
+        //   lineHeight: 1.5,
+        //   color: '#DDDDDD',  // Lighter text for readability
+        // },
+        // body2: {
+        //   fontSize: 14,
+        //   lineHeight: 1.5,
+        //   color: '#BBBBBB',  // Lighter text for secondary readability
+        // },
       },
     }),
     defaultPageTheme: 'home',
