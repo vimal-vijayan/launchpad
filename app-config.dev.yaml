@@ -1,0 +1,168 @@
+app:
+  title: Launchpad
+  baseUrl: http://localhost:7007
+
+organization:
+  name: Essity
+
+backend:
+  database:
+    pluginDivisionMode: database
+    client: pg
+    connection:
+      host: ${PSQL_HOST}
+      port: ${PSQL_PORT}
+      user: ${PSQL_USER}
+      password: ${PSQL_PASSWORD}
+      ssl: ${PSQL_SSL}
+
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+    #   # Uncomment the following host directive to bind to specific interfaces
+    #   # host: 127.0.0.1
+  csp:
+    connect-src: ["'self'", "http:", "https:"]
+    #   # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
+    #   # Default Helmet Content-Security-Policy values can be removed by setting the key to false
+  cors:
+    origin: http://localhost:7007
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+    Access-Control-Allow-Origin: "*"
+    # This is for local development only, it is not recommended to use this in production
+    # The production database configuration is stored in app-config.production.yaml
+
+integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+    - host: github.com
+      token: ${PRO_OPTIMUS_GITHUB_TOKEN}
+
+  # Replace personal access token with client id if possible
+  azure:
+    - host: dev.azure.com
+      credentials:
+        - personalAccessToken: ${PERSONAL_ACCESS_TOKEN}
+
+# proxy:
+### Example for how to add a proxy endpoint for the frontend.
+### A typical reason to do this is to handle HTTPS and CORS for internal services.
+# endpoints:
+#   '/test':
+#     target: 'https://example.com'
+#     changeOrigin: true
+
+# Reference documentation http://backstage.io/docs/features/techdocs/configuration
+# Note: After experimenting with basic setup, use CI/CD to generate docs
+# and an external cloud storage when deploying TechDocs for production use-case.
+# https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach
+techdocs:
+  builder: "local" # Alternatives - 'external'
+  generator:
+    runIn: "docker" # Alternatives - 'local'
+  publisher:
+    type: "local" # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
+
+auth:
+  providers:
+    microsoft:
+      development:
+        clientId: ${AUTH_MICROSOFT_CLIENT_ID}
+        clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
+        tenantId: ${AUTH_MICROSOFT_TENANT_ID}
+        domainHint: ${AUTH_MICROSOFT_TENANT_ID}
+        additionalScopes:
+          - Mail.Send
+        cookieDomain:
+          localhost # or the domain in production
+          # scaffolder:
+          # see https://backstage.io/docs/features/software-templates/configuration for software template options
+
+catalog:
+  orphanStrategy: delete
+  providers:
+    microsoftGraphOrg:
+      ## READMORE: https://backstage.io/docs/integrations/azure/org
+      default:
+        tenantId: ${AUTH_MICROSOFT_TENANT_ID}
+        clientId: ${AUTH_MICROSOFT_CLIENT_ID}
+        clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
+        queryMode: basic
+        user:
+          loadPhotos: true
+        group:
+          search: '"displayName:co-idp-launchpad-dev"'
+        userGroupMember:
+          filter: "displayName eq 'co-idp-launchpad-dev'"
+          search: '"displayName:co-idp-launchpad-dev"'
+        schedule:
+          frequency: PT01H
+          timeout: PT10M
+    github:
+      # Experimental:
+      #   organization: "vimal-vijayan"
+      #   catalogPath: './catalog-info.yaml'
+      #   filters:
+      #     branch: 'main'
+      #     repository: '.*'
+      #   schedule:
+      #     frequency: { minutes: 10 }
+      #     timeout: { minutes: 10 }
+      templateProvider:
+        organization: "prooptimus"
+        catalogPath: '/templates/**/*template.yaml'
+        filters:
+          branch: 'main'
+          repository: 'backstage.templates'
+        schedule:
+          frequency: { minutes: 1 } #TODO: Change to a higher frequency
+          timeout: { minutes: 10 }
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+    - allow:
+        [
+          Component,
+          System,
+          API,
+          Resource,
+          Location,
+          Template,
+          User,
+          Group,
+          Domain,
+        ]
+  locations:
+    # Local example data, file locations are relative to the backend process, typically `packages/backend`
+    - type: url
+      target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/templates/template.yaml
+      rules:
+        - allow: [Template]
+    # - type: url
+    #   target: https://github.com/prooptimus/backstage.templates/blob/main/templates/resource-group-template.yaml
+    #   rules:
+    #     - allow: [Template]
+
+    # - type: url
+    #   target: https://github.com/vimal-vijayan/idp.backstage.templates/blob/main/template.yaml
+    #   rules:
+    #     - allow: [Template]
+    
+## Uncomment these lines to add more example data
+# - type: url
+#   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
+
+## Uncomment these lines to add an example org
+# - type: url
+#   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
+#   rules:
+#     - allow: [User, Group]
+
+scaffolder:
+  defaultAuthor:
+    name: Scaffolder
+    email: scaffolder@backstage.io
+  defaultCommitMessage: "Initial commit"
