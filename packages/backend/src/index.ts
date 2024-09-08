@@ -91,8 +91,6 @@ import { runAzurePipelineAction } from './plugins/scaffolder/actions/runAzurePip
 import { createBackendModule } from '@backstage/backend-plugin-api';
 import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';
 
-// Custom Scaffolder Module with Custom Actions
-
 const scaffolderModuleCustomExtensions = createBackendModule({
   pluginId: 'scaffolder',
   moduleId: 'custom-extensions',
@@ -112,8 +110,11 @@ const scaffolderModuleCustomExtensions = createBackendModule({
   },
 });
 
-// Add the custom scaffolder module
 backend.add(scaffolderModuleCustomExtensions);
+
+
+
+
 
 // Start the backend
 backend.start();
