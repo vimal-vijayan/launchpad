@@ -1,13 +1,14 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
-import ExtensionIcon from '@material-ui/icons/Extension';
-import MapIcon from '@material-ui/icons/MyLocation';
-import LibraryBooks from '@material-ui/icons/LibraryBooks';
-import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import CategoryIcon from '@material-ui/icons/Category';
+import HomeIcon from '@mui/icons-material/Home';
+import ExtensionIcon from '@mui/icons-material/Extension';
+import MapIcon from '@mui/icons-material/MyLocation';
+import LibraryBooks from '@mui/icons-material/LibraryBooks';
+import CreateComponentIcon from '@mui/icons-material/AddCircleOutline';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import CategoryIcon from '@mui/icons-material/Category';
+import StoreIcon from '@mui/icons-material/Store';
 import { useApp } from '@backstage/core-plugin-api';
 
 // Custom Logo Components
@@ -53,8 +54,7 @@ const useSidebarLogoStyles = makeStyles({
   },
 });
 
-
-const SidebarLogo = () => {
+const SidebarLogo: React.FC = () => {
   const classes = useSidebarLogoStyles();
   const { isOpen } = useSidebarOpenState();
 
@@ -67,9 +67,7 @@ const SidebarLogo = () => {
   );
 };
 
-
-
-export const Root = ({ children }: PropsWithChildren<{}>) => (
+export const Root: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <SidebarPage>
     <Sidebar>
       <SidebarLogo />
@@ -78,9 +76,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
       </SidebarGroup>
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {/* Global nav, not org-specific */}
-        {/* <SidebarItem icon={HomeIcon} to="catalog" text="Home" /> */}
-        <SidebarItem icon={HomeIcon} to="/" text="Home">
+        <SidebarItem icon={HomeIcon as React.ComponentType} to="/" text="Home">
           <SidebarSubmenu title="Essity Catalog">
             <SidebarSubmenuItem
               title="Domains"
@@ -126,14 +122,14 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
             />
           </SidebarSubmenu>
         </SidebarItem>
-        <SidebarItem icon={CategoryIcon} to="catalog" text="Catalog" />
-        <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-        <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-        {/* End global nav */}
+        <SidebarItem icon={CategoryIcon as React.ComponentType} to="catalog" text="Catalog" />
+        <SidebarItem icon={ExtensionIcon as React.ComponentType} to="api-docs" text="APIs" />
+        <SidebarItem icon={LibraryBooks as React.ComponentType} to="docs" text="Docs" />
+        <SidebarItem icon={CreateComponentIcon as React.ComponentType} to="create" text="Create..." />
         <SidebarDivider />
         <SidebarScrollWrapper>
-          <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
+          <SidebarItem icon={StoreIcon as React.ComponentType} to="tech-radar" text="Demo" />
+          <SidebarItem icon={MapIcon as React.ComponentType} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
       </SidebarGroup>
       <SidebarSpace />
@@ -149,4 +145,3 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
     {children}
   </SidebarPage>
 );
-
