@@ -14,10 +14,10 @@ export const lightTheme = createUnifiedTheme({
         main: '#051d55',  // Dark blue for primary
       },
       secondary: {
-        main: '#4D7CFE',  // Bright blue for contrast
+        main: '#4D7CFE',  // Bright blue for secondary
       },
       error: {
-        main: '#EF4444',  // A vibrant red for errors
+        main: '#EF4444',  // Bright red for errors
       },
       warning: {
         main: '#F59E0B',  // Bright amber for warnings
@@ -45,9 +45,13 @@ export const lightTheme = createUnifiedTheme({
         background: '#051d55',  // Dark blue background for the sidebar
         indicator: '#bb1a4a',   // Brown indicator to provide contrast
         color: '#FFFFFF',       // White text for better contrast with dark blue background
-        selectedColor: '#bb1a4a',  // Bright blue for selected items
-        hoverBackground: '#4D7CFE', // Bright blue background for hover effect
-        hoverColor: '#FFFFFF',   // White text for hover effect
+        selectedColor: '#E7527E', // Pink for selected items
+        navItem: {
+          hoverBackground: '#374A77',  // Bright blue background for hovered items
+        },
+        submenu: {
+          background: '#374A77',  // Bright blue background for submenus
+        }
       },
     },
     typography: {
@@ -57,48 +61,32 @@ export const lightTheme = createUnifiedTheme({
         fontSize: 64,
         fontWeight: 600,
         marginBottom: 16,
-        // color: '#0A369D',
       },
       h2: {
         fontSize: 48,
         fontWeight: 600,
         marginBottom: 14,
-        // color: '#0A369D',
       },
       h3: {
         fontSize: 36,
         fontWeight: 600,
         marginBottom: 12,
-        // color: '#0A369D',
       },
       h4: {
         fontSize: 30,
         fontWeight: 600,
         marginBottom: 10,
-        // color: '#0A369D',
       },
       h5: {
         fontSize: 24,
         fontWeight: 600,
         marginBottom: 8,
-        // color: '#0A369D',
       },
       h6: {
         fontSize: 20,
         fontWeight: 600,
         marginBottom: 6,
-        // color: '#0A369D',
       },
-      // body1: {
-      //   fontSize: 16,
-      //   lineHeight: 1.5,
-      //   color: '#0A369D',
-      // },
-      // body2: {
-      //   fontSize: 14,
-      //   lineHeight: 1.5,
-      //   color: '#0A369D',
-      // },
     },
   }),
   defaultPageTheme: 'home',

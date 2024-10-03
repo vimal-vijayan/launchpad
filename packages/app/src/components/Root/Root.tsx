@@ -10,6 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CategoryIcon from '@material-ui/icons/Category';
 import { useApp } from '@backstage/core-plugin-api';
 
+
 // Custom Logo Components
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
@@ -36,7 +37,7 @@ import {
 import { SidebarSearchModal } from '@backstage/plugin-search';
 
 // Import the sidebar CSS
-import '../../theme/sidebar.css';
+// import '../../theme/sidebar.css';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -78,8 +79,6 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
       </SidebarGroup>
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {/* Global nav, not org-specific */}
-        {/* <SidebarItem icon={HomeIcon} to="catalog" text="Home" /> */}
         <SidebarItem icon={HomeIcon} to="/" text="Home">
           <SidebarSubmenu title="Essity Catalog">
             <SidebarSubmenuItem

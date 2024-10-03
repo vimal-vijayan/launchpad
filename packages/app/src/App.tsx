@@ -43,10 +43,6 @@ import LightIcon from '@material-ui/icons/WbSunny';
 import { lightTheme } from './theme/lightTheme';
 import { darkTheme } from './theme/darkTheme';
 import { providers } from './components/singin/identityProviders';
-
-// Import the sidebar CSS
-// import './theme/sidebar.css';
-
 import { greenTheme } from './theme/greenTheme';
 
 const app = createApp({
