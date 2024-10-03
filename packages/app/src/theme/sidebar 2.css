@@ -1,0 +1,71 @@
+/* src/layout.css */
+.MuiDrawer-paper {
+  background-color: #E0E7FF;  /* Soft light blue background */
+  color: #1E3A8A;  /* Dark blue text color to match the logo */
+  position: relative;
+  overflow: hidden;
+}
+
+.MuiDrawer-paper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwMCIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTUwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAsMTQwIEMzMzMuMjU1LDE0MCwzMzMuMjU1LDEsNjY2LjUxLDEgQzk5OS43NDUsMSwxMjk5LDEzMywxNTAsMTMzIEMxNzAwLDEzMywxNzAwLDE1MCwyMTAwLDE1MCBMMjEwMCw2IEwwLDYgTDAgMTQwIFoiIGZpbGw9IiAxRTNBOGEiIC8+PC9zdmc+') no-repeat top;
+  background-size: cover;
+}
+
+.MuiDrawer-paper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwMCIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTUwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAsOTUgQzMzMy4yNTUsOTUsMzMzLjI1NSw5Niw2NjYuNTEsOTYgQzk5OS43NDUsOTYsMTI5OSw4NywxNTEsODcgQzE3MDAuNiw4NywxNzAwLDgwLDIxMDAuNyw4MCBMm0yMDAuNywxNDAgTDAgMTQwIFoiIGZpbGw9IiAxRTNBOGEiIC8+PC9zdmc=') no-repeat bottom;
+  background-size: cover;
+}
+
+.MuiListItem-root {
+  background-color: #E0E7FF; /* Default background color */
+  color: #1E3A8A; /* Default text color */
+}
+
+
+.MuiListItem-root:hover {
+  background-color: #CBD5E1 !important; /* Light matching color for hover background */
+  color: #1E3A8A !important; /* Ensure text color remains consistent */
+}
+
+.TopBar {
+  background-color: #E0E7FF;  /* Soft light blue background matching the sidebar */
+  color: #1E3A8A;  /* Dark blue text color to match the logo */
+  position: relative;
+  overflow: hidden;
+  height: 64px;  /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Adjust to position the banner lower */
+}
+
+.TopBar::before {
+  content: '';
+  position: absolute;
+  top: -40px;  /* Adjust as needed to fit the wave shape */
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwMCIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTUwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAsMTQwIEMzMzMuMjU1LDE0MCwzMzMuMjU1LDEsNjY2LjUxLDEgQzk5OS43NDUsMSwxMjk5LDEzMywxNTAsMTMzIEMxNzAwLDEzMywxNzAwLDE1MCwyMTAwLDE1MCBMMjEwMCw2IEwwLDYgTDAgMTQwIFoiIGZpbGw9IiAxRTNBOGEiIC8+PC9zdmc+') no-repeat top;
+  background-size: cover;
+}
+
+.CentralPortion {
+  background-color: #F3F4F6;  /* Light grey background for the central portion */
+  color: #1E3A8A;  /* Dark blue text color to match the logo */
+  padding: 24px;
+  min-height: 100vh;  /* Ensure it covers the full viewport height */
+}

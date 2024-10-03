@@ -93,23 +93,19 @@ catalog:
         user:
           loadPhotos: true
         group:
-          search: '"displayName:co-idp-launchpad-dev"'
+          filter: startswith(displayName, 'co-idp-launchpad-')
+          # search: '"displayName:co-idp-launchpad-dev" OR "displayName:co-idp-launchpad-users"'
+          includeSubGroups: true
+          # search: '"displayName:co-idp-launchpad-dev"'
         userGroupMember:
-          filter: "displayName eq 'co-idp-launchpad-dev'"
-          search: '"displayName:co-idp-launchpad-dev"'
+          # filter: "displayName eq 'co-idp-launchpad-dev'"
+          filter: startswith(displayName, 'co-idp-launchpad-')
+          # search: '"displayName:co-idp-launchpad-dev"'
         schedule:
-          frequency: PT01H
+          # frequency: PT01H
+          frequency: PT1M
           timeout: PT10M
     github:
-      # Experimental:
-      #   organization: "vimal-vijayan"
-      #   catalogPath: './catalog-info.yaml'
-      #   filters:
-      #     branch: 'main'
-      #     repository: '.*'
-      #   schedule:
-      #     frequency: { minutes: 10 }
-      #     timeout: { minutes: 10 }
       templateProvider:
         organization: "prooptimus"
         catalogPath: '/templates/**/*template.yaml'
@@ -171,7 +167,6 @@ scaffolder:
       - host: dev.azure.com
         credentials:
           - personalAccessToken: ${PERSONAL_ACCESS_TOKEN}
-
 
 permission:
   enabled: true
