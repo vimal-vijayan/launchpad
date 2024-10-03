@@ -87,10 +87,6 @@ backend.add(import('@backstage/plugin-scaffolder-backend-module-azure'));
 backend.add(import('@parfuemerie-douglas/scaffolder-backend-module-azure-repositories'))
 
 //custom azure pipeline action
-// import { createBackendModule } from '@backstage/backend-plugin-api';
-// import { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';
-// import { createAzureDevOpsPipelineTriggerAction } from './plugins/scaffolder-backend-module-azure-devops-pipeline-action/src/actions/azure-devops-pipeline/pipeline-action';
-
 import { scaffolderModuleCustomActions } from '../../../plugins/scaffolder-backend-module-azure-devops-pipeline-action/src/actions/azure-devops-pipeline/module';
 backend.add(scaffolderModuleCustomActions);
 
