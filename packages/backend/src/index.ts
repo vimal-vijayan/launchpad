@@ -63,10 +63,11 @@ backend.add(
 );
 
 // Permission plugins
-// backend.add(import('@backstage/plugin-permission-backend/alpha'));
-backend.add(
-  import('@backstage/plugin-permission-backend-module-allow-all-policy'),
-);
+backend.add(import('@backstage/plugin-permission-backend/alpha'));
+// backend.add(
+//   import('@backstage/plugin-permission-backend-module-allow-all-policy'),
+// );
+backend.add(import('./extensions/permissionsPolicyExtension'));
 
 // Search plugins
 backend.add(import('@backstage/plugin-search-backend/alpha'));

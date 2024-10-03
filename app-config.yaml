@@ -171,4 +171,7 @@ scaffolder:
       - host: dev.azure.com
         credentials:
           - personalAccessToken: ${PERSONAL_ACCESS_TOKEN}
-  
+
+
+permission:
+  enabled: true
