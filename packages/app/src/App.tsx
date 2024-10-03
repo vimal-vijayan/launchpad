@@ -78,7 +78,7 @@ const app = createApp({
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },
-  
+
 
   themes: [{
     id: 'light-theme',
@@ -107,7 +107,7 @@ const app = createApp({
       <UnifiedThemeProvider theme={greenTheme} children={children} />
     ),
   }
-]
+  ]
 });
 
 const routes = (
@@ -143,7 +143,17 @@ const routes = (
               title: "IAM",
               filter: entity =>
                 entity?.metadata?.tags?.includes('IAM') ?? false,
-            }
+            },
+            {
+              title: "Azure",
+              filter: entity =>
+                entity?.metadata?.tags?.some(tag => ['azure', 'Azure', 'AZURE'].includes(tag)) ?? false,
+            },
+            {
+              title: "Azure",
+              filter: entity =>
+                entity?.metadata?.tags?.some(tag => ['AKS, aks, kuberenets, k8s'].includes(tag)) ?? false,
+            },
           ]}
         />
       }
