@@ -166,3 +166,9 @@ scaffolder:
     name: Scaffolder
     email: scaffolder@backstage.io
   defaultCommitMessage: "Initial commit"
+  integrations:
+    azure:
+      - host: dev.azure.com
+        credentials:
+          - personalAccessToken: ${PERSONAL_ACCESS_TOKEN}
+  
