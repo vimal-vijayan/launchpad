@@ -92,13 +92,15 @@ catalog:
         queryMode: basic
         user:
           loadPhotos: true
-        group:
-          search: '"displayName:co-idp-launchpad-dev"'
+        group: 
+          # search: '"displayName:co-idp-launchpad-dev"'
+          filter: startsWith(displayName, 'co-idp-launchpad-') 
         userGroupMember:
-          filter: "displayName eq 'co-idp-launchpad-dev'"
-          search: '"displayName:co-idp-launchpad-dev"'
+          # filter: "displayName eq 'co-idp-launchpad-dev'"
+          # search: '"displayName:co-idp-launchpad-dev"'
+          filter: startsWith(displayName, 'co-idp-launchpad-')
         schedule:
-          frequency: PT01H
+          frequency: PT1M # every minute
           timeout: PT10M
     github:
       # Experimental:
