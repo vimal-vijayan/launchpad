@@ -3,7 +3,7 @@ import { Config } from '@backstage/config';
 import { z } from 'zod';
 import { Logger } from 'winston';
 import fetch from 'node-fetch';
-import { ScmIntegrations, AzureIntegrationConfig } from '@backstage/integration';
+import { ScmIntegrations } from '@backstage/integration';
 
 export function createAzureDevOpsPipelineTriggerAction(options: { config: Config; logger: Logger }) {
     const { config, logger } = options;
