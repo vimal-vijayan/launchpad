@@ -3,7 +3,7 @@ import { Config } from '@backstage/config';
 import { z } from 'zod';
 import { Logger } from 'winston';
 import fetch from 'node-fetch';
-import { ScmIntegrations } from '@backstage/integration';
+import { ScmIntegrations, AzureIntegrationConfig } from '@backstage/integration';
 
 export function createAzureDevOpsPipelineTriggerAction(options: { config: Config; logger: Logger }) {
     const { config, logger } = options;
@@ -36,13 +36,16 @@ export function createAzureDevOpsPipelineTriggerAction(options: { config: Config
                 throw new Error('No Azure DevOps integration found for host dev.azure.com');
             }
 
+            console.log('azureIntegration : ', azureIntegration);
+
             // Get Personal Access Token
             const credential = azureIntegration.config.credentials?.[0];
+            console.log('credential : ', credential);
 
-            if (!credential || credential.kind !== 'PersonalAccessToken') {
-                throw new Error('Azure DevOps Personal Access Token is not configured in app-config.yaml');
-            }
-
+            // if (!credential || credential.kind !== 'PersonalAccessToken') {
+            //     throw new Error('Azure DevOps Personal Access Token is not configured in app-config.yaml');
+            // }
+            
             const personalAccessToken = credential.personalAccessToken;
 
             const apiVersion = '7.0';
